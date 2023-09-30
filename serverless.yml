@@ -23,7 +23,7 @@ functions:
   helloWorld:
     handler: src/handlers/helloWorld.handler
     events:
-    - http:
-        path: hello-world
+    - httpApi:
+        path: /hello-world
         method: get
 
