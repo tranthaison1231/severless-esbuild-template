@@ -1,0 +1,25 @@
+service: test-service
+frameworkVersion: "3"
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+
+custom:
+  baseName: ${self:service}-${self:provider.region}
+  esbuild:
+    packager: 'pnpm'
+    bundle: true
+    minify: true
+    sourcemap: false
+    keepNames: true
+
+functions:
+  helloWorld:
+    handler: src/handlers/helloWorld.handler
+
